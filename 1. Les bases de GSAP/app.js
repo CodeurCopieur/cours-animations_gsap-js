@@ -15,8 +15,10 @@ gsap.to( '.title', {
 // methode .from() -> le point A avant l'état finale (B) mais bug sur cet methode
 
 bntCat.addEventListener('click', ()=> {
-  gsap.from( img1, {
+  /*gsap.from( img1, {
     opacity: 0, duration: 3
-  });
-  
+  });*/
+
+  // Pour résoudre le bug
+  gsap.fromTo( img1, {opacity: 0}, {opacity: 1, duration: 3});
 })
