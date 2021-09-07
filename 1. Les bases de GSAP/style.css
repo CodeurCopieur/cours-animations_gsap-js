@@ -8,7 +8,7 @@
 
 body {
   background: #222;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .container-images {
