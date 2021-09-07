@@ -3,9 +3,9 @@ const img1 = document.querySelector('.container-images img:nth-child(1)');
 const bntCat = document.querySelector('.cat-fade');
 
 
-gsap.to( img1, {
+/*gsap.to( img1, {
   x: 100, y:100, scale:2, duration: 2
-});
+});*/
 
 gsap.to( '.title', {
   color: 'red',duration: 1  
@@ -20,5 +20,6 @@ bntCat.addEventListener('click', ()=> {
   });*/
 
   // Pour résoudre le bug
-  gsap.fromTo( img1, {opacity: 0}, {opacity: 1, duration: 3});
+  //gsap.fromTo( img1, {opacity: 0}, {opacity: 1, duration: 3});
+  gsap.to( img1, {x: 100, y:100, scale:2, duration: 2, delay: 2, repeat:1, repeatDelay: 2});
 })
