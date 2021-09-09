@@ -45,6 +45,17 @@ bntCat.addEventListener('click', ()=> {
 
 gsap.to('.container-images img', {duration: .2, x: 50, stagger: .2});
 
+// la fonction random
 gsap.to( '.btn', {
   duration: .2, x: "random(-100,100)", ease:"power4", stagger: .2
 });
+
+
+// Utiliser un key frames
+
+gsap.to( '.txt',
+  {keyframes: [
+    {duration: .3, y: 50},
+    {duration: .3, scale: 1.3},
+    {duration: .3, y: 100}
+  ]});
