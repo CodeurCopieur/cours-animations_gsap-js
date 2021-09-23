@@ -59,3 +59,17 @@ gsap.to( '.txt',
     {duration: .3, scale: 1.3},
     {duration: .3, y: 100}
   ]});
+
+
+  const complete = () => console.log('Terminé');
+
+// Déclencher des fonctions callback
+
+gsap.to('.container-images img:nth-child(2)', {
+  y: 100,
+  repeat: 1,
+  onComplete: complete,
+  /*onStart: () => console.log('Démarage'),
+  onUpdate: () => console.log('Anim en cour'),
+  onRepeat: () => console.log('Répétition')*/
+})
