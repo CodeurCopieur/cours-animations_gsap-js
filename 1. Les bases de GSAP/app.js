@@ -73,3 +73,21 @@ gsap.to('.container-images img:nth-child(2)', {
   onUpdate: () => console.log('Anim en cour'),
   onRepeat: () => console.log('Répétition')*/
 })
+
+//Enregistrer des tweens
+
+gsap.registerEffect({
+  name: "imgEffect",
+  effect: (targets, config) => {
+    return gsap.to( targets, {
+      duration: config.duration, 
+      y: 200,
+      scale: 1.4,
+      rotation: 360
+    })
+  },
+  defaults: {duration: 2}
+})
+
+
+gsap.effects.imgEffect(img1)
