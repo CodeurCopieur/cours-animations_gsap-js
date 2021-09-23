@@ -90,4 +90,9 @@ gsap.registerEffect({
 })
 
 
-gsap.effects.imgEffect(img1)
+gsap.effects.imgEffect(img1);
+
+
+//La méthode set()
+
+gsap.set('.container-btns .btn:nth-child(3)', {opacity: 0})
