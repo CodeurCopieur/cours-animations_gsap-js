@@ -96,3 +96,24 @@ gsap.effects.imgEffect(img1);
 //La méthode set()
 
 gsap.set('.container-btns .btn:nth-child(3)', {opacity: 0})
+
+//"Yoyo" et les méthodes des tweens
+
+const anim = gsap.to('.container-images img:nth-child(3)', {
+  y:250,
+  yoyo:true, 
+  repeat: 1
+})
+
+anim.duration(2)
+anim.pause()
+
+
+//anim.kill()
+//anim.seek(2.5)
+anim.resume()
+
+
+setTimeout( () => {
+  anim.restart();
+}, 3000)
