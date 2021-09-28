@@ -3,6 +3,7 @@ const img2 = document.querySelector('.container-images img:nth-child(2)');
 const img3 = document.querySelector('.container-images img:nth-child(3)');
 const title = document.querySelector('.title');
 const txt = document.querySelector('.txt');
+const txtS = document.querySelector('.txt2');
 
 const tl = gsap.timeline();
 
@@ -16,10 +17,9 @@ const tl = gsap.timeline();
 
 tl
   .to(img1, {autoAlpha: 1, y: 0, duration: 1})
-  .to(img2, {autoAlpha: 1, y: 0, duration: 1}, '>')
-  .to(img3, {autoAlpha: 1, y: 0, duration: 1})
-  .to(title, {autoAlpha: 1, y: 0, duration: 1})
-  .to(txt, {autoAlpha: 1, y: 0, duration: 1})
+  .to(img2, {autoAlpha: 1, y: 0, duration: 1}, '-=.75')
+  .to(img3, {autoAlpha: 1, y: 0, duration: 1}, '-=.75')
+
 
 // 3ieme paramètre
   /*  0 (veux dire t0) : signifie que img3 va s'afficher en même temps que img1
@@ -27,5 +27,34 @@ tl
     ou +=.75
 
     '<' tu demares au même moment que le tween précédent ou '<.5' .5s après le tween précédent
-    '>' tu demares à la fin dutween précédent
+    '>' tu demares à la fin du tween précédent
    */
+
+// Les paramètres utilitaires de la Timeline
+
+
+const TL = gsap.timeline({
+  defaults: {
+    duration: 1,
+    ease: "elastic"
+  },
+  //repeat: -1,
+  //repeat: -1,
+  //repeatDelay: .5,
+  //yoyo: true,
+  //onStart: () => console.log('commence'),
+  //onComplete: () => console.log('termine'),
+  pause: true
+});
+
+
+TL
+  .to(title, {autoAlpha: 1, y: 0})
+  .to(txt, {autoAlpha: 1, y: 0})
+  .to(txtS, {autoAlpha: 1, y: 0})
+
+
+  setTimeout( () =>{
+    //TL.seek(1)
+    TL.play()
+  })
