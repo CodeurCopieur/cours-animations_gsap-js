@@ -51,10 +51,14 @@ const TL = gsap.timeline({
 TL
   .to(title, {autoAlpha: 1, y: 0})
   .to(txt, {autoAlpha: 1, y: 0})
+  .addLabel('endAnim')
+  .add( () => {
+    console.log('yep!');
+  })
   .to(txtS, {autoAlpha: 1, y: 0})
 
 
   setTimeout( () =>{
-    //TL.seek(1)
-    TL.play()
+    //TL.seek('endAnim')// le tween TL se déclenche à partir de endAnim
+    TL.play('endAnim')
   })
