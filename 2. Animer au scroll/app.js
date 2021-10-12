@@ -6,9 +6,10 @@ gsap.to('.b2 h2', {
   scrollTrigger: {
     trigger: ".b2 h2",
     markers: true,
+    scrub: 1,
     //    Trigger Scroller
-    start: "top center+=200", // 50% ou center-=200
-    end: "center 20%",//`+=${document.querySelector(".b2 h2").offsetHeight}`
+    start: "top 20%", // 50% ou center-=200
+    end: "bottom 10%",//`+=${document.querySelector(".b2 h2").offsetHeight}`
     // onEnter onLeave onEnterBack onLeaveBack
     toggleActions: "play pause reverse reset",
     // play pause resume reset restart complete reverse none
@@ -17,4 +18,22 @@ gsap.to('.b2 h2', {
     onEnterBack: () => console.log('EnterBack'),
     onLeaveBack: () => console.log('LeaveBack'),
   }
+})
+
+/*gsap.to('.b2', {
+  scrollTrigger: {
+    trigger: '.b2',
+    pin: true,
+    markers: true
+  }
+})*/
+
+//syntaxe simplifier
+
+ScrollTrigger.create({
+  trigger: '.b2',
+    pin: true,
+    //markers: true,
+    //    Trigger Scroller
+    end: 'bottom 50%'
 })
