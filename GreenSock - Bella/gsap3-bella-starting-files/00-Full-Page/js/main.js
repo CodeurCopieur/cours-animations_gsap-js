@@ -8,7 +8,7 @@ function initNavigation() {
 
     mainNavLinks.forEach( link => {
         link.addEventListener('mouseleave', ({target}) => {
-            console.log(target);
+            
             // add class
             target.classList.add('animate-out');
 
