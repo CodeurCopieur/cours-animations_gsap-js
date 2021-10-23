@@ -2,9 +2,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 function initNavigation() {
 
-    const mainNavLinks = gsap.utils.toArray('.main-nav a');
+    // Navigation Links
 
-    console.log(mainNavLinks);
+    const mainNavLinks = gsap.utils.toArray('.main-nav a');
 
     mainNavLinks.forEach( link => {
         link.addEventListener('mouseleave', ({target}) => {
@@ -19,6 +19,16 @@ function initNavigation() {
         })
     });
 
+    // Navigation Toggle Class
+
+    ScrollTrigger.create({
+        markers: true,
+        start: 100,
+        toggleClass: {
+            targets: 'body',
+            className: 'has-scrolled'
+        }
+    })
 }
 
 function init(){
