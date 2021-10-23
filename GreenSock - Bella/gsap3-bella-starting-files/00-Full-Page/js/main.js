@@ -35,7 +35,7 @@ function initNavigation() {
     }
 
     ScrollTrigger.create({
-        markers: true,
+        //markers: true,
         start: 100,
         end: 'bottom bottom-=200',
         toggleClass: {
@@ -47,10 +47,22 @@ function initNavigation() {
     })
 }
 
-function init(){
-    
-    initNavigation();
+function initHeaderTilt() {
+    document.querySelector('header').addEventListener('mousemove', moveImages)
+}
 
+function moveImages(e){
+
+    const {offsetX, offsetY, target} = e;
+    const {clientWidth, clientHeight} = target;
+
+    console.log(offsetX, offsetY, clientWidth, clientHeight);
+
+}
+
+function init(){
+    initNavigation();
+    initHeaderTilt();
 }
 
 window.addEventListener('load', function(){
