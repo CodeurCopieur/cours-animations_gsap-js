@@ -56,7 +56,23 @@ function moveImages(e){
     const {offsetX, offsetY, target} = e;
     const {clientWidth, clientHeight} = target;
 
-    console.log(offsetX, offsetY, clientWidth, clientHeight);
+    //console.log(offsetX, offsetY, clientWidth, clientHeight);
+    // get 0 0 in the center
+    const xPos = (offsetX/clientWidth) - .5;
+    const yPos = (offsetY/clientHeight) - .5;
+    const modifier = (i) => i*1.2+.5
+
+    const leftImages = gsap.utils.toArray('.hg__left .hg__image');
+    // move left 3 images
+    leftImages.forEach((image, i) => {
+        gsap.to(image, {
+            duration: 1.2,
+            x: xPos * 20 * modifier(i),
+            y: yPos * 30 * modifier(i),
+            rotationY: xPos*40,
+            rotationX: yPos*10
+        })
+    });
 
 }
 
