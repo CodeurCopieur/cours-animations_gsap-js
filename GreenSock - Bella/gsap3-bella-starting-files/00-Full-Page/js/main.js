@@ -63,16 +63,36 @@ function moveImages(e){
     const modifier = (i) => i*1.2+.5
 
     const leftImages = gsap.utils.toArray('.hg__left .hg__image');
+    const rightImages = gsap.utils.toArray('.hg__right .hg__image');
     // move left 3 images
     leftImages.forEach((image, i) => {
         gsap.to(image, {
             duration: 1.2,
-            x: xPos * 20 * modifier(i),
-            y: yPos * 30 * modifier(i),
+            x: xPos*20*modifier(i),
+            y: yPos*30*modifier(i),
             rotationY: xPos*40,
-            rotationX: yPos*10
+            rotationX: yPos*10,
+            ease: 'Power3.out'
         })
     });
+
+    rightImages.forEach((image, i) => {
+        gsap.to(image, {
+            duration: 1.2,
+            x: xPos*20*modifier(i),
+            y: -yPos*30*modifier(i),
+            rotationY: xPos*40,
+            rotationX: yPos*10,
+            ease: 'Power3.out'
+        })
+    });
+
+    gsap.to('.decor__circle', {
+        duration: 1.7,
+        x: xPos*100,
+        y: yPos*120,
+        ease: 'Power4.out'
+    })
 
 }
 
