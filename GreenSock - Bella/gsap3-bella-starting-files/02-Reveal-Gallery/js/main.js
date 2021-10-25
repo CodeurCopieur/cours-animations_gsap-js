@@ -6,12 +6,12 @@ function initHoverReveal() {
     sections.forEach(section => {
         
         // obtenir des composants pour l'animation
-        const imageBlock = section.querySelector('.rg__image');
-        const mask = section.querySelector('.rg__image--mask');
+        section.imageBlock = section.querySelector('.rg__image');
+        section.mask = section.querySelector('.rg__image--mask');
 
         // réinitialiser la position initiale
-        gsap.set(imageBlock, {yPercent: -101});
-        gsap.set(mask, {yPercent: 100});
+        gsap.set(section.imageBlock, {yPercent: -101});
+        gsap.set(section.mask, {yPercent: 100});
 
         // ajouter des écouteurs d'événement à chaque section
         section.addEventListener('mouseenter', createHoverReveal)
@@ -19,8 +19,29 @@ function initHoverReveal() {
     });
 }
 
-function createHoverReveal(e){
-    console.log(e.type);
+function createHoverReveal({type, target}){
+    
+    const {imageBlock, mask} = target;
+
+    let tl = gsap.timeline({
+        defaults: {
+            duration: .7,
+            ease: 'Power4.out'
+        }
+    });
+    
+    if(type === 'mouseenter') {
+
+        tl.to([mask, imageBlock], {yPercent: 0})
+
+    }else if(type === 'mouseleave') {
+
+        tl
+        .to(imageBlock, {yPercent: -101})
+        .to(mask, {yPercent: 100}, 0)
+    }
+
+    return tl;
 }
 
 function init(){
