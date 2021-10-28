@@ -59,12 +59,24 @@ function createHoverReveal({type, target}){
     return tl;
 }
 
-function init(){
-    
+/*function init(){
     initHoverReveal();
-
 }
 
 window.addEventListener('load', function(){
     init();
-});
+});*/
+
+
+// definir un breakpoint
+const mq = window.matchMedia("(min-width: 768px)");
+
+// ajouter un écouteur de changement à ce point d'arrêt
+mq.addListener(handleWithChange);
+
+handleWithChange(mq);
+
+// changement de requête média
+function handleWithChange(mq) {
+    mq.matches ? initHoverReveal() : console.log('mobile');
+}
