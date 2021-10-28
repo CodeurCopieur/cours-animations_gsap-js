@@ -1,8 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 
+const sections = document.querySelectorAll('.rg__column');
+
 function initHoverReveal() {
 
-    const sections = document.querySelectorAll('.rg__column');
     sections.forEach(section => {
         
         // obtenir des composants pour l'animation
@@ -30,7 +31,6 @@ function getTextHeight(textHeight) {
 }
 
 function createHoverReveal({type, target}){
-    
     const {imageBlock, mask, text, textHeight, textMask, textP, image} = target;
 
     let tl = gsap.timeline({
@@ -74,9 +74,37 @@ const mq = window.matchMedia("(min-width: 768px)");
 // ajouter un écouteur de changement à ce point d'arrêt
 mq.addListener(handleWithChange);
 
+// first page load
 handleWithChange(mq);
+
+// reinitialiser tous lespropriétés
+function resetPros(elts) {
+    //console.log(elts);
+
+    // stop all tweens
+    gsap.killTweensOf('*')
+
+    if(elts.length){
+        elts.forEach(el => {
+            el && gsap.set(el, {clearProps: 'all'})
+        });
+    }
+}
 
 // changement de requête média
 function handleWithChange(mq) {
-    mq.matches ? initHoverReveal() : console.log('mobile');
+    if(mq.matches) {
+        initHoverReveal();
+    } else {
+        console.log('mobile');
+        // supprimer un écouteur de changement pour chaque section
+        sections.forEach(section => {
+            section.removeEventListener('mouseenter', createHoverReveal);
+            section.removeEventListener('mouseleave', createHoverReveal);
+
+            const {imageBlock, mask, text, textHeight, textMask, textP, image} = section;
+
+            resetPros([imageBlock, mask, text, textHeight, textMask, textP, image]);
+        });
+    }
 }
