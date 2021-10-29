@@ -40,6 +40,12 @@ function createPortfolioHover({type, target}) {
         // fondu des images
         // tous les liens dos à dos
         // changer la couleur d'arrière-plan noire par défaut #ACB7AE
+
+        const tl = gsap.timeline();
+        tl
+        .to([largeImage, smallImage], {autoAlpha: 0})
+        .to(allLinks, {color: '#000', autoAlpha: 1}, 0)
+        .to(pageBackground, { backgroundColor: '#ACB7AE', ease: 'none'}, 0)
     }
 }
 
