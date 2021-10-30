@@ -12,6 +12,7 @@ function initPortfolioHover() {
     allLinks.forEach( link => {
         link.addEventListener('mouseenter', createPortfolioHover)
         link.addEventListener('mouseleave', createPortfolioHover)
+        link.addEventListener('mousemove', createPortfolioMove)
     });
 }
 
@@ -47,6 +48,27 @@ function createPortfolioHover({type, target}) {
         .to(allLinks, {color: '#000', autoAlpha: 1}, 0)
         .to(pageBackground, { backgroundColor: '#ACB7AE', ease: 'none'}, 0)
     }
+}
+
+function createPortfolioMove({clientY}) {
+
+    gsap.to(largeImage, {
+        duration: 1.2,
+        y: getPortfolioOffset(clientY)/6,
+        x: -getPortfolioOffset(clientY)/10,
+        ease: 'Power3.inOut'
+    })
+
+    gsap.to(smallImage, {
+        duration: 1.5,
+        y: -getPortfolioOffset(clientY)/3,
+        x: -getPortfolioOffset(clientY)/10,
+        ease: 'Power3.inOut'
+    })
+}
+
+function getPortfolioOffset(clientY) {
+    return -(document.querySelector('.portfolio__categories').clientHeight - clientY);
 }
 
 function init(){
