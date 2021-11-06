@@ -21,10 +21,21 @@ function initImageParallax() {
     });
 }
 
+function initPinSteps() {
+    ScrollTrigger.create({
+        trigger: '.fixed-nav',
+        start: 'top center',
+        endTrigger: '#stage4',
+        end: 'center center',
+        pin: true,
+        markers: true
+    })
+}
+
 function init(){
     
-    initImageParallax()
-
+    initImageParallax();
+    initPinSteps();
 }
 
 window.addEventListener('load', function(){
