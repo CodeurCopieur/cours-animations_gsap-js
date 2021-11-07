@@ -29,6 +29,29 @@ function initPinSteps() {
         end: 'center center',
         pin: true,
         markers: true
+    });
+
+    const getVh = () => {
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.clientHeight || 0);
+
+        return vh;
+    }
+
+
+    gsap.utils.toArray('.stage').forEach( (stage, i) => {
+
+        const navLinks = gsap.utils.toArray('.fixed-nav li');
+
+        ScrollTrigger.create({
+            trigger: stage,
+            start: 'top center',
+            end: ()=> `+=${stage.clientHeight+getVh()/10}`,
+            toggleClass: {
+                targets: navLinks[i],
+                className: 'is-active'
+            },
+            markers: true
+        })
     })
 }
 
