@@ -33,8 +33,12 @@ function initPinSteps() {
 
     const getVh = () => {
         const vh = Math.max(document.documentElement.clientHeight || 0, window.clientHeight || 0);
-
         return vh;
+    }
+
+    const updateBodyColor = (color) => {
+        //gsap.to('.fill-background', { backgroundColor: color, ease: 'none'});
+        document.documentElement.style.setProperty('--bcg-fill-color', color);  
     }
 
 
@@ -50,7 +54,9 @@ function initPinSteps() {
                 targets: navLinks[i],
                 className: 'is-active'
             },
-            markers: true
+            markers: true,
+            onEnter: () => updateBodyColor(stage.dataset.color),
+            onEnterBack: () => updateBodyColor(stage.dataset.color),
         })
     })
 }
