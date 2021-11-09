@@ -61,10 +61,24 @@ function initPinSteps() {
     })
 }
 
+function initScrollTo() {
+
+    gsap.utils.toArray('.fixed-nav a').forEach( link => {
+
+        const target = link.getAttribute('href');
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            gsap.to(window, {duration: 1.5, scrollTo: target, ease: 'Power2.out'});
+        })
+    })
+}
+
 function init(){
     
     initImageParallax();
     initPinSteps();
+    initScrollTo();
 }
 
 window.addEventListener('load', function(){
