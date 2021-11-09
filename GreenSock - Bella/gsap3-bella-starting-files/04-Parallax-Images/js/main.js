@@ -15,7 +15,7 @@ function initImageParallax() {
                 // markers: true,
                 trigger: section,
                 start: 'top bottom',
-                scrub: true
+                scrub: 1
             }
         })
     });
@@ -28,7 +28,8 @@ function initPinSteps() {
         endTrigger: '#stage4',
         end: 'center center',
         pin: true,
-        markers: true
+        pinReparent: true
+        //markers: true
     });
 
     const getVh = () => {
@@ -54,7 +55,7 @@ function initPinSteps() {
                 targets: navLinks[i],
                 className: 'is-active'
             },
-            markers: true,
+            //markers: true,
             onEnter: () => updateBodyColor(stage.dataset.color),
             onEnterBack: () => updateBodyColor(stage.dataset.color),
         })
@@ -84,3 +85,27 @@ function init(){
 window.addEventListener('load', function(){
     init();
 });
+
+let container = document.querySelector('#scroll-container');
+let height;
+
+function setHeight(){
+    height = `${container.clientHeight}`;
+    document.body.style.height = `${height}px`;
+}
+
+ScrollTrigger.addEventListener("refreshInit", setHeight);
+
+gsap.to(container, {
+
+    y: () => -(height - document.documentElement.clientHeight),
+    ease:'none',
+    scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 2,
+        invalidateOnRefresh: true,
+        markers: true
+    }
+})
