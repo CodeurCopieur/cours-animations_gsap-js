@@ -1,0 +1,106 @@
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+
+.button {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  transform: translateX(-100%);
+}
+
+.menu .button {
+  color: white;
+}
+
+.list-items {
+  position: absolute;
+  left: 20%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  height: 100vh;
+}
+
+.list-items li {
+  margin: 20px 0;
+  z-index: 2;
+}
+
+.list-items li a {
+  color: white;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 500;
+  mix-blend-mode: difference;
+  transition: 2s;
+}
+
+.social {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  height: 80px;
+  width: 100%;
+}
+
+.social ul {
+  margin-left: 50px;
+  display: flex;
+}
+
+.social ul li {
+  margin: 0px 20px;
+}
+
+.social ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+
+.list-items li a:hover {
+  transition: 2s;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-style: italic;
+}
