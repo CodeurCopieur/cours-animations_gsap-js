@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let tl = new TimelineMax();
+  
   // init controller
   let controller = new ScrollMagic.Controller();
+
+  let tl = new TimelineMax();
 
   tl
     .from('.section_1_01', 4, {
@@ -58,5 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .setTween(tl)
     .setPin('.first-section')
+    .addTo(controller);
+
+  
+  let tl2 = new TimelineMax();
+  tl2
+  .to('.top .image-container', 4, {
+    height: 0
+  })
+
+  let scene2 = new ScrollMagic.Scene({
+      triggerElement: '.second-section',
+      duration: '100%',
+      triggerHook: 0,
+      offset: '50'
+    })
+    .setTween(tl2)
+    .setPin('.second-section')
     .addTo(controller);
 });
