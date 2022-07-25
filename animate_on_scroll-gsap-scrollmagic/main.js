@@ -117,5 +117,28 @@ document.addEventListener('DOMContentLoaded', () => {
     .setPin('.third-section')
     .addTo(controller);
 
+  let tl4 = new TimelineMax();
+  tl4
+  .to('.section_4_01', 4, {
+    autoAlpha: 0
+  })
+  .from('.section_4_02', 4, {
+    autoAlpha: 0
+  }, '-=4')
+  .from('.section_4_03', 4, {
+    autoAlpha: 0
+  })
+  .from('.section_4_04', 4, {
+    autoAlpha: 0
+  })
 
+  let scene4 = new ScrollMagic.Scene({
+      triggerElement: '.forth-section',
+      duration: '300%',
+      triggerHook: 0,
+      offset: '300'
+    })
+    .setTween(tl4)
+    .setPin('.forth-section')
+    .addTo(controller);
 });
