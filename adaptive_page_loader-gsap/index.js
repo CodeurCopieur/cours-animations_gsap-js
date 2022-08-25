@@ -3,6 +3,9 @@ let counter = {
 };
 
 const loaderNumber = document.querySelector('.loader_number');
+const loader = document.querySelector('.loader');
+const loaderTop = document.querySelector('.loader_top');
+const loaderBottom = document.querySelector('.loader_bottom');
 
 function updateLoaderText() {
   let progress = Math.round(counter.value)
@@ -20,7 +23,16 @@ if (sessionStorage.getItem('visited') !== null) {
 }
 sessionStorage.setItem('visited', 'true');
 
-let tl = gsap.timeline({});
+function endLoaderAnimation() {
+
+  const tlEnd = gsap.timeline();
+  tlEnd
+       .to(loaderTop, {autoAlpha: 1, y: '-100%', duration: 1})
+       .to(loaderBottom, {autoAlpha: 1, y: '100%', duration: 1}, '-=.75')
+       .to(loader, {autoAlpha: 0, dispaly: 'none', duration: 1}, '-=.75')
+}
+
+let tl = gsap.timeline({onComplete: endLoaderAnimation});
 tl.to(counter, {
   onUpdate: updateLoaderText,
   value: 100,
