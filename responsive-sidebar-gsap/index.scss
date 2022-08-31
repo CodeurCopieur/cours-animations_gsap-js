@@ -4,3 +4,125 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+
+$color: #7189ff;
+$white: #ffffff;
+$textColor: #CC0000;
+$fontFamily: sans-serif;
+$baseFontSize: 16px;
+$background: #fffffa;
+
+body {
+  background-color: $background;
+}
+
+.navigationMenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20rem;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: $fontFamily;
+}
+.navigationMenu.active {
+  pointer-events: visible;
+}
+
+.navigationMenu .revealer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: $textColor;
+  z-index: 2;
+}
+
+.navigationMenu .trigger {
+  position: fixed;
+  z-index: 1000;
+  right: .625rem;
+  top: .625rem;
+  background-color: transparent;
+  outline: 0;
+  border: none;
+  pointer-events: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 1.875rem;
+  height: 1.875rem;
+  cursor: pointer;
+}
+
+.navigationMenu .trigger span {
+  display: inline-flex;
+  height: 4px;
+  width: 30px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  background-color: $textColor;
+  border-radius: 20px;
+}
+
+.navigationMenu .trigger span:nth-last-child(2) {
+  width: 75%;
+}
+
+.navigationMenu .trigger span:last-child {
+  width: 50%;
+}
+
+.navigationMenu.active .trigger span {
+  background-color: $white;
+}
+
+.navigationMenu .menu-wrapper {
+  background-color: $color;
+}
+
+.navigationMenu .menu {
+  position: relative;
+  padding: 40px;
+  margin: 0;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.navigationMenu .menu li a {
+  font-size: calc($baseFontSize * 3);
+  padding: .625rem;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 900;
+  color: $white;
+  position: relative;
+  overflow: hidden;
+}
+
+.navigationMenu .menu li a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+  width: 0;
+  height: 0;
+  margin: auto;
+  display: inline-flex;
+  border: 2px solid $textColor;
+  border-radius: 1.25rem;
+  transition: all ease .25s;
+}
+
+.navigationMenu .menu li a.active::after,
+.navigationMenu .menu li a:hover::after {
+  opacity: 1;
+  left: 0;
+  width: 100%;
+}
