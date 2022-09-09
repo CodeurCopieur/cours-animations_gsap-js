@@ -1,0 +1,15 @@
+{
+  "name": "scroll_trigger-gsap",
+  "version": "1.0.0",
+  "description": "* Créer une animation de défilement gsap à l'aide du nouveau plug-in de déclenchement de défilement gsap 3, de l'animation d'épinglage(pin) et de gommage(scrub).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}
