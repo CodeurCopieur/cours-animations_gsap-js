@@ -4,4 +4,33 @@
   box-sizing: border-box;
   color: #fff;
   text-decoration: none;
+  font-family: sans-serif;
+}
+
+nav {
+  position: absolute;
+  padding: 3rem 10rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  height: 100vh;
+}
+
+.container img {
+  width: 100%;
+  position: absolute;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.main-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,  -30%);
+  font-size: 6rem;
 }
