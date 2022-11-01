@@ -34,3 +34,23 @@ nav {
   transform: translate(-50%,  -30%);
   font-size: 6rem;
 }
+
+.content {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(24, 24, 24);
+  z-index: 2;
+}
+
+.content-images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  min-height: 60vh;
+}
+
+.text {
+  padding: 2rem 20rem;
+  font-size: 1.1rem;
+}
