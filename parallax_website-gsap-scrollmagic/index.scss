@@ -22,7 +22,7 @@ nav {
 .container img {
   width: 100%;
   position: absolute;
-  height: 100vh;
+  height: 110vh;
   object-fit: cover;
   z-index: -1;
 }
@@ -40,6 +40,7 @@ nav {
   min-height: 100vh;
   background-color: rgb(24, 24, 24);
   z-index: 2;
+  position: absolute;
 }
 
 .content-images {
