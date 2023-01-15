@@ -71,17 +71,32 @@ body {
 
 
   .box-a {
-    top: 200px;
     background-color: #8d3dae;
   }
-  
-  .box-b {
-    top: 600px;
-  }
+
   
   .box-c {
-    top: 1000px;
     background-color: #e26c16;
+  }
+
+  .box-d {
+    top: 800px;
+  }
+  
+  .box-e {
+    top: 1100px;
+  }
+  
+  .box-f {
+    top: 1400px;
+  }
+  .box.box-d,
+  .box.box-e,
+  .box.box-f {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    will-change: transform;
   }
   
   .line {
