@@ -9,11 +9,40 @@ let smoother = ScrollSmoother.create({
   effects: true // ajouter des effets lisses
 });
 
-// Faites défiler facilement jusqu'à un certain point
+smoother.effects('.box', {
+  speed: .5,
+  lag: i => i * 1
+})
 
-let btn  = document.querySelector('.button')
+// utiliser avec gsap et scrollTriger
 
-btn.addEventListener('click', e => {
+gsap.to('.box-e', {
+  rotate: 360,
+  scrollTrigger: {
+    trigger: '.box-e',
+    //    Trigger Scroller
+    start: 'center center',
+    // markers: true,
+    scrub: 1,
+  }
+})
+
+//syntaxe simplifier
+
+ScrollTrigger.create({
+  trigger: '.box-c',
+    pin: true,
+    markers: true,
+    //    Trigger Scroller
+    start: 'top center',
+    end: '+=300px'
+})
+
+// Faites défiler facilement jusqu'à un certain point (payant)
+
+// let btn  = document.querySelector('.button')
+
+// btn.addEventListener('click', e => {
   // smoother.scrollTo('.box-f', true, 'center center')
   // pixel a la place de '.box-f'
 
@@ -22,4 +51,4 @@ btn.addEventListener('click', e => {
   //   duration: 2,
   //   ease: 'back.out'
   // })
-})
+// })
