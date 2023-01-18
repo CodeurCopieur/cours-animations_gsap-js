@@ -32,11 +32,16 @@ gsap.to('.box-e', {
 ScrollTrigger.create({
   trigger: '.box-c',
     pin: true,
-    markers: true,
+    // markers: true,
     //    Trigger Scroller
     start: 'top center',
     end: '+=300px'
 })
+
+// Simple parallax Effects
+
+smoother.effects("img", { speed: "auto" });
+
 
 // Faites défiler facilement jusqu'à un certain point (payant)
 
