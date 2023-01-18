@@ -38,10 +38,7 @@ ScrollTrigger.create({
     end: '+=300px'
 })
 
-// Simple parallax Effects
-
-smoother.effects("img", { speed: "auto" });
-
+// Pause du défilement fluide
 
 // Faites défiler facilement jusqu'à un certain point (payant)
 
