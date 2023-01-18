@@ -51,7 +51,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 100vh;
+    min-height: 150vh;
   }
 
   button {
@@ -80,15 +80,15 @@ body {
   }
 
   .box-d {
-    top: 800px;
+    top: 1050px;
   }
   
   .box-e {
-    top: 1100px;
+    top: 1450px;
   }
   
   .box-f {
-    top: 1400px;
+    top: 1750px;
   }
   .box.box-d,
   .box.box-e,
