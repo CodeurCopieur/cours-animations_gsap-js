@@ -42,10 +42,37 @@
       trigger: '.box-c',
       toggleAction: "restart pause reverse pause",
       //    Trigger Scroller
-      // start: 'top center',
-      markers: true,
+      start: 'center center',
+      end: '+=300',
+      // markers: true,// ou 1
       scrub: 1,
     }
+  })
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.box-a',
+      start: 'top center',
+      end: 'top 100px',
+      markers: true,// ou 1
+      scrub: 3,
+    }
+  })
+
+  tl
+  .to('.box-a', {
+    x: 400,
+    rotate: 300,
+    ease: "none",
+    duration: 3,
+  })
+  .to('.box-a', {
+    backgroundColor: "purple",
+    duration: 1,
+  })
+  .to('.box-a', {
+    x: 0,
+    duration: 3
   })
 
   </script>
