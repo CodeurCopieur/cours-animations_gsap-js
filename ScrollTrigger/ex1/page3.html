@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+
+.container .app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+
+.container div p {
+  margin-top: 3em;
+}
+
+
+.skyblue{
+  background: skyblue;
+}
+
+
+.green{
+  background: #fff;
+}
+
+
+.orange{
+  background: #ff7c35;
+}
+
+.btn {
+  padding: 10px 35px;
+  border: 2px solid #fff;
+  margin-top: 1em;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+  </style>
+</head>
+<body>
+      <div class="container">
+
+        <div class="skyblue app">
+          <h1>Text1</h1>
+          <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non veniam perferendis maxime.<br/>Minus quae amet officia, quam nisi enim veritatis. <br/><a class="btn" href="#">button</a></p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eius sapiente dolor repellendus quos mollitia vitae adipisci, rem excepturi. Accusamus odio delectus laborum 
+              reprehenderit optio consectetur itaque pariatur, perspiciatis necessitatibus!
+            </p>
+          </div>
+        </div>
+        <div class="green app">
+          <h1>Text2</h1>
+          <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non veniam perferendis maxime.<br/>Minus quae amet officia, quam nisi enim veritatis. <br/><a class="btn" href="#">button</a></p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eius sapiente dolor repellendus quos mollitia vitae adipisci, rem excepturi. Accusamus odio delectus laborum 
+              reprehenderit optio consectetur itaque pariatur, perspiciatis necessitatibus!
+            </p>
+          </div>
+        </div>
+        <div class="orange app">
+          <h1>Text3</h1>
+          <div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non veniam perferendis maxime.<br/>Minus quae amet officia, quam nisi enim veritatis. <br/><a class="btn" href="#">button</a></p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eius sapiente dolor repellendus quos mollitia vitae adipisci, rem excepturi. Accusamus odio delectus laborum 
+              reprehenderit optio consectetur itaque pariatur, perspiciatis necessitatibus!
+            </p>
+          </div>
+        </div>
+      </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+   <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.defaults({ease: "none", duration: 2});
+
+    // ScrollTrigger.create({
+    //   trigger: ".green",
+    //   start: 'top top',
+    //   end: '+=1000px',
+    //   scrub: true,
+    //   markers: true,
+    //   pin: true
+    // })
+
+    gsap.utils.toArray('.app').forEach((element, i) => {
+      ScrollTrigger.create({
+        trigger: element,
+        start: 'top top',
+        pin: true,
+        pinSpacing: false
+      })
+    });
+    </script>
+</body>
+</html>
