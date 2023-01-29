@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP matchMedia()</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <header class="header">
+        <h1 class="title">matchMedia</h1>
+        <!-- <button class="button">Jump to F</button> -->
+      </header>
+      <div class="boxes">
+        <!-- data-speed -->
+        <div class="box box-a">a</div>
+        <div class="box box-b">b</div>
+        <div class="box box-c">c</div>
+      </div>
+
+      <div class="box box-d">d</div>
+      <div class="box box-e">e</div>
+      <div class="box box-f">f</div>
+      <div class="line"></div>
+
+       
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    let mm = gsap.matchMedia();
+    
+    // Optional scope paramater
+
+    // Interactivity and cleanup
+    let boxD = document.querySelector('.box-d');
+
+    mm.add('(max-width: 800px)', (context) => {
+
+      // Probleme résolus : si on n'est pas au dessus de 800px, il s'arrête
+      context.add('spinTheBox', ()=> {
+        gsap.to('.box-d', {
+          rotation: 360,
+          ease: 'none',
+          repeat: -1,
+          duration: 2
+        })
+      })
+
+      boxD.addEventListener('click', context.spinTheBox)
+      
+      return () => {
+        boxD.removeEventListener('click', context.spinTheBox)
+      }
+    })
+
+    // The conditions object
+    mm.add({
+      isMobile: "(max-width: 500px)",
+      isDesktop: "(min-width: 501px)",
+    }, (context) => {
+      console.log(context.conditions, context);
+      let {isMobile, isDesktop, reduceMotion} = context.conditions;
+
+      let duration = context.isReversed ? 0 : 2;
+
+      // gsap.to('.box-c', {
+      //   rotation: reduceMotion ? 0 : isMobile ? -360 : 360,
+      //   duration: duration
+      // })
+
+      gsap.from('.box-c', {
+        rotation: () => {
+          if (reduceMotion){
+            return 0
+          } else  if(isMobile){
+            return -360
+          } else if(!isMobile){
+            return 360
+          }
+        },
+        duration: duration
+      })
+    })
+
+    // Getting setup
+
+    mm.add('(max-width: 800px)', () => {
+      gsap.to('.box-a', {
+        rotation: 360,
+        ease: 'none',
+        repeat: -1,
+        duration: 2
+      })
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.box-c',
+          //    Trigger Scroller
+          start: 'top-=200 80%',
+          end: 'bottom 20%',
+          scrub: true,
+          markers: true,// ou 1
+        }
+      });
+
+      tl
+      .to('.box-b', {
+        rotation: 360,
+        duration:2
+      })
+      .to('.box-b', {
+        scale: 2,
+        duration:1
+      })
+
+    })
+
+  </script>
+</body>
+</html>
